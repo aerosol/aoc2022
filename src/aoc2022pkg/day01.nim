@@ -1,4 +1,6 @@
 import strutils
+import std/algorithm
+from math import sum
 
 proc solve*(input_file: string): int =
   var carriage = newSeq[int]()
@@ -9,7 +11,8 @@ proc solve*(input_file: string): int =
       carriage.add(calories)
       calories = 0
     else:
-      let weight = strutils.parseInt(line)
-      inc(calories, weight)
+      let value = strutils.parseInt(line)
+      inc(calories, value)
 
-  carriage.max()
+  carriage.sort(Descending)
+  carriage[0..2].sum
