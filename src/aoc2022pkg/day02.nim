@@ -12,9 +12,8 @@ const WhoBeats: array[Choice, Choice] = [Paper, Scissors, Rock]
 const WhoLoses: array[Choice, Choice] = [Scissors, Rock, Paper]
 const PickBonus: array[Choice, int] = [1, 2, 3]
 const VersusBonus: array[VersusResult, int] = [6, 0, 3]
-
-var moveCodes = {'A': Rock, 'B': Paper, 'C': Scissors}.toTable
-var resultCodes = {'X': Lose, 'Y': Draw, 'Z': Win}.toTable
+const moveCodes = {'A': Rock, 'B': Paper, 'C': Scissors}.toTable
+const resultCodes = {'X': Lose, 'Y': Draw, 'Z': Win}.toTable
 
 func `>`(left, right: Choice): bool =
   #[
