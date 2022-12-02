@@ -44,7 +44,8 @@ proc pickBonus*(choice: Choice): int =
 proc versusBonus*(r: VersusResult): int =
   VersusBonus[r]
 
-proc guessChoice*(opponentsChoice: Choice, desiredResult: VersusResult): Choice =
+proc guessChoice*(opponentsChoice: Choice,
+    desiredResult: VersusResult): Choice =
   case desiredResult:
     of Draw:
       opponentsChoice
