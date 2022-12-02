@@ -9,4 +9,4 @@ import unittest
 
 import aoc2022pkg/day01
 test "regression test lol":
-  check solve("inputs/day01.txt") == 198551
+  check solve_day01("inputs/day01.txt") == 198551

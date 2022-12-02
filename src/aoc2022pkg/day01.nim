@@ -2,7 +2,7 @@ import strutils
 import std/algorithm
 from math import sum
 
-proc solve*(input_file: string): int =
+proc solve_day01*(input_file: string): int =
   var carriage = newSeq[int]()
   var calories = 0
 
