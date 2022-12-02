@@ -29,5 +29,20 @@ test "versus bonuses":
   check versusBonus(Draw) == 3
   check versusBonus(Lose) == 0
 
+test "smarty pants - guess what to do against paper":
+  check guessChoice(Paper, Win) == Scissors
+  check guessChoice(Paper, Lose) == Rock
+  check guessChoice(Paper, Draw) == Paper
+
+test "smarty pants - guess what to do against rock":
+  check guessChoice(Rock, Win) == Paper
+  check guessChoice(Rock, Lose) == Scissors
+  check guessChoice(Rock, Draw) == Rock
+
+test "smarty pants - guess what to do against scissors":
+  check guessChoice(Scissors, Win) == Rock
+  check guessChoice(Scissors, Lose) == Paper
+  check guessChoice(Scissors, Draw) == Scissors
+
 test "regression test lol":
-  check solve_day02("inputs/day02.txt") == 10595
+  check solve_day02("inputs/day02.txt") == 9541
