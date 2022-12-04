@@ -1,17 +1,4 @@
-proc commonCompartment*(s: string): char =
-  let l = s.len div 2
-  var seqLeft: seq[char] = @[]
-  var found: char
-  for i in 0 .. s.len - 1:
-    if i < l:
-      seqLeft.add(s[i])
-    else:
-      if seqLeft.contains(s[i]):
-        found = s[i]
-        break
-      else:
-        continue
-  found
+import sequtils, sets, strutils
 
 proc calcPriority*(c: char): int =
   if c >= 'a':
@@ -19,12 +6,20 @@ proc calcPriority*(c: char): int =
   else:
     ord(c) - 38
 
-proc solve_day03*(input_file: string): int =
-  var prioritySum: int = 0
-  for line in lines input_file:
-    let c = commonCompartment(line)
-    inc(prioritySum, calcPriority(c))
-  prioritySum
+type
+  Chunk = seq[string]
 
+proc toChunks*(input: seq[string], parts: int): seq[Chunk] =
+  input.distribute(parts)
 
+proc commonCompartment*(chunk: Chunk): char =
+  chunk.mapIt(toHashSet(it)).foldl(a * b).toSeq[0]
 
+proc solve_day03*(inputFile: string): int =
+  var totalSum: int = 0
+  let data: seq[string] = readFile(inputFile).strip().split('\n')
+  let parts = data.len div 3
+  for chunk in toChunks(data, parts):
+    inc(totalSum, calcPriority(commonCompartment(chunk)))
+
+  totalSum
