@@ -19,6 +19,10 @@ test "check if sets are overlapping fully":
   check oneContainsAnother(buildRangeSet("2-8"), buildRangeSet("3-9")) == false
   check oneContainsAnother(buildRangeSet("2-8"), buildRangeSet("2-8")) == true
 
+test "check if sets overlap at all":
+  check overlapsAtAll(buildRangeSet("2-8"), buildRangeSet("3-7")) == true
+  check overlapsAtAll(buildRangeSet("6-6"), buildRangeSet("6-6")) == true
+  check overlapsAtAll(buildRangeSet("1-9"), buildRangeSet("9-11")) == true
 
 test "integration - part 1":
   check solve_day04("inputs/day04.txt") == 580
